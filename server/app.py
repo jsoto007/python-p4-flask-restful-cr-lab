@@ -31,10 +31,15 @@ api.add_resource(Plants, "/plants")
 class PlantByID(Resource):
     def get(self, id):
         plant = Plant.query.filter_by(id=id).first()
-        plant_dict = plant.to_dict()
-        response = make_response(jsonify(plant_dict), 200)
+        if plant: 
+            plant_dict = plant.to_dict()
+            response = make_response(jsonify(plant_dict), 200)
+
+        else: 
+            response = make_response(jsonify({"error": "This plant is not in our data system: Please reaserch for another one."}))
 
         return response
+        
         
 api.add_resource(PlantByID, "/plants/<int:id>")
 
