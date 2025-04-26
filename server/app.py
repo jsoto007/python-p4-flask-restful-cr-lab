@@ -26,6 +26,23 @@ class Plants(Resource):
 
         return response
     
+    def post(self): 
+        data = request.get_json()
+
+        new_plant = Plant(
+            name=data["name"],
+            image=data["image"],
+            price=data["price"]
+        )
+
+        db.session.add(new_plant)
+        db.session.commit()
+
+        response = make_response(new_plant.to_dict(), 201)
+        
+        return response
+    
+    
 api.add_resource(Plants, "/plants")
 
 class PlantByID(Resource):
