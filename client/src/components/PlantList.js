@@ -1,3 +1,4 @@
+import React from "react";
 import PlantCard from "./PlantCard";
 
 function PlantList({ plants }) {

@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import NewPlantForm from "./NewPlantForm";
 import PlantList from "./PlantList";
